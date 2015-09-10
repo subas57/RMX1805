@@ -298,6 +298,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SonyMusicPlayer
 
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images
 
 # Recorder
 PRODUCT_PACKAGES += \

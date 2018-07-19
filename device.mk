@@ -178,6 +178,10 @@ PRODUCT_PACKAGES += \
     qti-telephony-utils \
     qti_telephony_utils.xml
 
+# Power
+PRODUCT_PACKAGES += \
+    power.qcom:64
+
 # RCS
 PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager \

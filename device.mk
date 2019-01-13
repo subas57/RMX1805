@@ -321,6 +321,10 @@ WITH_LINEAGE_CHARGER := false
 PRODUCT_PACKAGES += \
     OPScreenRecorder
 
+# Touch features
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch@1.0-service.oppo_msm8974
+
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/oppo/RMX1805/RMX1805-vendor.mk)
 

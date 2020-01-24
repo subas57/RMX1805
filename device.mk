@@ -262,7 +262,7 @@ PRODUCT_PACKAGES += \
 
 # Charger
 PRODUCT_PACKAGES += \
-    charger_res_images
+    product_charger_res_images
 
 # Charger
 PRODUCT_COPY_FILES += \
@@ -313,7 +313,3 @@ PRODUCT_PACKAGES += \
 
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/oppo/RMX1805/RMX1805-vendor.mk)
-
-
-
-

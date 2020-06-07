@@ -593,4 +593,7 @@
 
      <!-- Enable Zram writeback feature to allow unused pages in zram be written to flash. -->
     <bool name="config_zramWriteback">true</bool>
+   
+    <!-- If face auth sends the user directly to home/last open app, or stays on keyguard -->
+    <bool name="config_faceAuthDismissesKeyguard">true</bool>
 </resources>

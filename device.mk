@@ -46,6 +46,9 @@ PRODUCT_PACKAGES += \
     libqdMetaData.system \
     libtinyxml
 
+# Dirac
+$(call inherit-product, packages/apps/RealmeDirac/dirac.mk)
+
 # Doze
 PRODUCT_PACKAGES += \
     RealmeParts

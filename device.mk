@@ -287,6 +287,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0
 
+PRODUCT_BOOT_JARS += \
+    WfdCommon
+
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.media.recorder-max-base-layer-fps=60
@@ -303,8 +306,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SonyMusicPlayer
 
+
+# Recorder
+PRODUCT_PACKAGES += \
+    OPScreenRecorder
+
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/oppo/RMX1805/RMX1805-vendor.mk)
+
 
 
 

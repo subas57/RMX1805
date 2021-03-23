@@ -191,8 +191,17 @@ PRODUCT_PACKAGES += \
     ims_ext_common.xml \
     telephony-ext
 
+<<<<<<< HEAD
 PRODUCT_BOOT_JARS += \
     telephony-ext
+=======
+# Prebuilt Google Sounds
+PRODUCT_PACKAGES += \
+    PrebuiltGoogleSounds
+
+PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0-service
+>>>>>>> e574abe (sweet: add prebuilt google sounds)
 
 # TextClassifier
 PRODUCT_PACKAGES += \

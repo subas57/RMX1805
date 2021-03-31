@@ -198,6 +198,10 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl.recovery \
     android.hardware.health@2.1-service
 
+# Remove unwanted packages
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \

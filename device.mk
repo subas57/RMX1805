@@ -291,13 +291,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.media.recorder-max-base-layer-fps=60
 
-<<<<<<< HEAD
-# Get non-open-source specific aspects
-$(call inherit-product, vendor/oppo/RMX1805/RMX1805-vendor.mk)
-=======
 # Perf
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.perf@2.2.vendor
 
-include vendor/xiaomi/sweet/sweet-vendor.mk
->>>>>>> 13e1332 (sweet: build QTI perf interfaces from source)
+# Gallery
+PRODUCT_PACKAGES += \
+    SonyAlbum
+
+# Get non-open-source specific aspects
+$(call inherit-product, vendor/oppo/RMX1805/RMX1805-vendor.mk)
+

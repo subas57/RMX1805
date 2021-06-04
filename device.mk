@@ -299,6 +299,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SonyAlbum
 
+# Music
+PRODUCT_PACKAGES += \
+    SonyMusicPlayer
+
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/oppo/RMX1805/RMX1805-vendor.mk)
+
+
 

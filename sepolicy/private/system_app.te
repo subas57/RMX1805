@@ -1,0 +1,2 @@
+type vendor_sysfs_graphics, sysfs_type, fs_type;
+

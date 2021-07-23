@@ -1,0 +1,67 @@
+on boot 
+ 
+   # FP
+service oppo_fingerprints_sh /vendor/bin/sh /vendor/bin/init.oppo.fingerprints.sh
+    class main
+    user root
+    oneshot
+
+service fps_hal /vendor/bin/hw/vendor.oppo.hardware.biometrics.fingerprint@2.1-service
+    class late_start
+    user system
+    group system input uhid
+
+service face_hal /system/bin/true
+    disabled
+
+    # Touchscreen/DT2W
+#    chown system system /proc/touchpanel/double_tap_enable
+#    chown 0660 /proc/touchpanel/double_tap_enable
+#    write /proc/touchpanel/double_tap_enable 1
+
+    # Disable edge limit control interface
+#    chown system system /proc/touchpanel/oppo_tp_limit_enable
+#    chown 0660 /proc/touchpanel/oppo_tp_limit_enable
+#    write /proc/touchpanel/oppo_tp_limit_enable 0
+
+    # Enable oppo touchpanel direction
+#    chown system system /proc/touchpanel/oppo_tp_direction
+#    chown 0660 /proc/touchpanel/oppo_tp_direction
+#    write /proc/touchpanel/oppo_tp_direction 1
+
+on post-fs
+    setprop oppo.camera.packname com.oppo.camera
+
+    # Boot time FS tune
+    write /sys/block/sda/queue/iostats 0
+    write /sys/block/sda/queue/scheduler cfq
+    write /sys/block/sda/queue/iosched/slice_idle 0
+    write /sys/block/sda/queue/read_ahead_kb 2048
+    write /sys/block/sda/queue/nr_requests 256
+    write /sys/block/sdf/queue/iostats 0
+    write /sys/block/sdf/queue/scheduler cfq
+    write /sys/block/sdf/queue/iosched/slice_idle 0
+    write /sys/block/sdf/queue/read_ahead_kb 2048
+    write /sys/block/sdf/queue/nr_requests 256
+    write /sys/block/dm-0/queue/read_ahead_kb 2048
+    write /sys/block/dm-1/queue/read_ahead_kb 2048
+    write /sys/block/dm-2/queue/read_ahead_kb 2048
+
+on late-fs
+    # Boot time FS tune
+    write /sys/block/dm-3/queue/read_ahead_kb 2048
+
+on property:sys.boot_completed=1
+    # Runtime FS tuning: as we have init boottime setting and kernel patch setting
+    # default readahead to 2048KB. We should adjust the setting upon boot_complete
+    # for runtime performance
+    write /sys/block/sda/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/nr_requests 128
+    write /sys/block/sda/queue/iostats 1
+    write /sys/block/sdf/queue/read_ahead_kb 128
+    write /sys/block/sdf/queue/nr_requests 128
+    write /sys/block/sdf/queue/iostats 1
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/dm-1/queue/read_ahead_kb 128
+    write /sys/block/dm-2/queue/read_ahead_kb 128
+    write /sys/block/dm-3/queue/read_ahead_kb 128

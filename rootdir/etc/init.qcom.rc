@@ -1,0 +1,83 @@
+import /system/etc/init/init.safailnet.rc
+
+on init
+    # Bind mount the fstab file with the one in /vendor/etc/
+    mount none /system/etc/fstab.qcom /vendor/etc/fstab.qcom bind
+    # Bind mount the config file with the one in  /vendor/etc/audio/
+    mount none /system/etc/audio_policy_configuration.xml /vendor/etc/audio/audio_policy_configuration.xml bind
+    mount none /system/bin/hw/android.hardware.light@2.0-service.RMX1805 /vendor/bin/hw/android.hardware.light@2.0-service bind
+
+on post-fs
+    mount none /system/etc/WCNSS_qcom_cfg.ini /vendor/etc/wifi/WCNSS_qcom_cfg.ini bind
+    mount none /system/etc/p2p_supplicant_overlay.conf /vendor/etc/wifi/p2p_supplicant_overlay.conf bind
+    mount none /system/etc/wpa_supplicant_overlay.conf /vendor/etc/wifi/wpa_supplicant_overlay.conf bind
+    mount none /system/overlay/BluetoothResCommon.apk /vendor/overlay/BluetoothResCommon.apk bind
+
+on boot
+    # OTG
+    write /sys/class/power_supply/usb/otg_switch 1
+
+    # backlight
+    chown system system /sys/class/backlight/panel0-backlight/brightness
+    chown system system /sys/class/backlight/panel0-backlight/max_brightness
+    chown system system /sys/class/backlight/panel1-backlight/brightness
+    chown system system /sys/class/backlight/panel1-backlight/max_brightness
+
+    # Light
+    mount none /dev/null vendor/lib/hw/lights.msm8953.so bind
+    mount none /dev/null vendor/lib/hw/android.hardware.light@2.0-impl.so bind
+    mount none /dev/null vendor/lib64/hw/lights.msm8953.so bind
+    mount none /dev/null vendor/lib64/hw/android.hardware.light@2.0-impl.so bind
+
+service set_zram /vendor/bin/sh /system/etc/init/set_zram.sh
+    class late_start
+    disabled
+    user root
+    group system
+    oneshot
+
+service ktweak /vendor/bin/sh /system/etc/init/ktweak.sh
+    class late_start
+    disabled
+    user root
+    group system
+    oneshot
+
+on property:sys.boot_completed=1
+    start set_zram
+    start ktweak
+
+    # Game mode
+    write /proc/touchpanel/game_switch_enable 1
+
+    # Smart Charging
+    chown system system /sys/class/power_supply/battery/mmi_charging_enable
+    chmod 0666 /sys/class/power_supply/battery/mmi_charging_enable
+
+# Performance profiles
+on property:perf_profile=1
+    exec - root -- /system/bin/perf_profile.sh 1
+
+on property:perf_profile=0
+    exec - root -- /system/bin/perf_profile.sh 0
+
+on property:sys.boot_completed=1
+    chown root root /sys/module/ged/parameters/gx_force_cpu_boost
+    chown root root /proc/cpufreq/cpufreq_power_mode
+    chown root root /proc/cpufreq/cpufreq_cci_mode
+    
+service charger /system/bin/charger
+    class charger
+    user system
+    group system graphics input
+    critical
+    capabilities SYS_BOOT
+    seclabel u:r:charger:s0
+
+on charger
+    write /sys/class/leds/lcd-backlight/brightness 100
+
+on property:sys.boot_completed=1
+    # Restrict permissions to socket file
+    # to hide Magisk & co.
+    chmod 440 /proc/net/unix

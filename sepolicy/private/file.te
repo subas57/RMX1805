@@ -1,0 +1,16 @@
+type adsprpcd_file, file_type;
+type firmware_file, file_type;
+type persist_file, file_type;
+type bt_firmware_file, file_type;
+
+# Touchpanel
+type proc_touchpanel, fs_type, proc_type;
+
+# CABC Mode
+type sysfs_graphics_ffl, sysfs_type, fs_type;
+
+# Vibarator
+type vibrator_sysfs, fs_type, sysfs_type;
+
+# Smart Charging
+type sysfs_scharge, sysfs_type, fs_type;

@@ -34,15 +34,9 @@ service set_zram /vendor/bin/sh /system/etc/init/set_zram.sh
     group system
     oneshot
 
-service ktweak /vendor/bin/sh /system/etc/init/ktweak.sh
-    class late_start
-    disabled
-    user root
-    group system
-    oneshot
-
 on property:sys.boot_completed=1
     start set_zram
+<<<<<<< HEAD
     start ktweak
 
     # Game mode
@@ -79,3 +73,5 @@ on property:sys.boot_completed=1
     # Restrict permissions to socket file
     # to hide Magisk & co.
     chmod 440 /proc/net/unix
+=======
+>>>>>>> 62c8825 (Revert "RMX1805: add ktweak")

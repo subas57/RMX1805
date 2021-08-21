@@ -301,6 +301,7 @@ PRODUCT_PACKAGES += \
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
+WITH_LINEAGE_CHARGER := false
 
 # Recorder
 PRODUCT_PACKAGES += \

@@ -105,7 +105,10 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     fstab.qcom \
     init.oppo.rc \
-    set_zram.sh
+    set_zram.sh \
+    init.usb.rc \
+    init.usb.configfs.rc \
+    init.wlan.rc 
 
 # Dex
 PRODUCT_DEXPREOPT_SPEED_APPS += \
@@ -226,6 +229,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
+
+# Charger
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/off_chg.sh:install/bin/off_chg.sh \
+    $(DEVICE_PATH)/rootdir/bin/charger:install/bin/charger
 
 # Charger
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -1,5 +1,5 @@
+import /vendor/etc/init/hw/init.oppo.seccommon.rc
 on boot 
- 
    # FP
 service oppo_fingerprints_sh /vendor/bin/sh /vendor/bin/init.oppo.fingerprints.sh
     class main
@@ -28,6 +28,17 @@ service face_hal /system/bin/true
 #    chown system system /proc/touchpanel/oppo_tp_direction
 #    chown 0660 /proc/touchpanel/oppo_tp_direction
 #    write /proc/touchpanel/oppo_tp_direction 1
+
+on property:ro.build.release_type=true
+    write /proc/sys/fs/suid_dumpable 0
+#endif
+
+on property:persist.sys.otg_support=true
+    write /sys/class/power_supply/usb/otg_switch 1
+
+on property:persist.sys.otg_support=false
+    write /sys/class/power_supply/usb/otg_switch 0
+    setprop sys.debug.otg false
 
 on post-fs
     setprop oppo.camera.packname com.oppo.camera
@@ -65,3 +76,4 @@ on property:sys.boot_completed=1
     write /sys/block/dm-1/queue/read_ahead_kb 128
     write /sys/block/dm-2/queue/read_ahead_kb 128
     write /sys/block/dm-3/queue/read_ahead_kb 128
+

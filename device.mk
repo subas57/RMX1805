@@ -88,7 +88,8 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.base@1.0_system \
     android.hidl.manager@1.0 \
-    android.hidl.manager@1.0_system
+    android.hidl.manager@1.0_system \
+    android.hidl.allocator@1.0-service
 
 # IRSC
 PRODUCT_COPY_FILES += \
@@ -108,7 +109,8 @@ PRODUCT_PACKAGES += \
     set_zram.sh \
     init.usb.rc \
     init.usb.configfs.rc \
-    init.wlan.rc 
+    init.wlan.rc \
+    healthd.rc
 
 # Dex
 PRODUCT_DEXPREOPT_SPEED_APPS += \

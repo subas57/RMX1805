@@ -191,17 +191,15 @@ PRODUCT_PACKAGES += \
     ims_ext_common.xml \
     telephony-ext
 
-<<<<<<< HEAD
 PRODUCT_BOOT_JARS += \
     telephony-ext
-=======
+
 # Prebuilt Google Sounds
 PRODUCT_PACKAGES += \
     PrebuiltGoogleSounds
 
 PRODUCT_PACKAGES += \
     android.hardware.media.omx@1.0-service
->>>>>>> e574abe (sweet: add prebuilt google sounds)
 
 # TextClassifier
 PRODUCT_PACKAGES += \
@@ -232,12 +230,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_TARGET_VNDK_VERSION := 28
 PRODUCT_EXTRA_VNDK_VERSIONS := 28
 
-<<<<<<< HEAD
 # Zygote preforking
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.device_config.runtime_native.usap_pool_enabled=true \
     persist.device_config.runtime_native.usap_pool_size_max=5
-=======
+
 # WiFi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
@@ -259,7 +256,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
     android.hardware.thermal@2.0-service.qti
->>>>>>> 7ed34b7 (sweet: build the QTI WiFi interfaces from source)
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -267,8 +263,8 @@ PRODUCT_PACKAGES += \
 
 # Charger
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/off_chg.sh:install/bin/off_chg.sh \
-    $(DEVICE_PATH)/rootdir/bin/charger:install/bin/charger
+    $(TARGET_COPY_OUT_SYSTEM)/configs/off_chg.sh:install/bin/off_chg.sh \
+    $(TARGET_COPY_OUT_SYSTEMs)/rootdir/bin/charger:install/bin/charger
 
 # Charger
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -257,10 +257,6 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0-service.qti
 
 # Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
-
-# Charger
 PRODUCT_COPY_FILES += \
     $(TARGET_COPY_OUT_SYSTEM)/configs/off_chg.sh:install/bin/off_chg.sh \
     $(TARGET_COPY_OUT_SYSTEMs)/rootdir/bin/charger:install/bin/charger

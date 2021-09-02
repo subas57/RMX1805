@@ -10,5 +10,3 @@
 # Light
 /system/bin/hw/android\.hardware\.light@2\.0-service\.RMX1805 u:object_r:hal_light_default_exec:s0
 
-# Touch
-/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service.oppo_msm8939          u:object_r:hal_lineage_touch_default_exec:s0

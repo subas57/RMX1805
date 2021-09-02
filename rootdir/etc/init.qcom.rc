@@ -1,4 +1,8 @@
 import /system/etc/init/init.safailnet.rc
+import /system/etc/init/init.wlan.rc
+import /system/etc/init/init.target.rc
+import /system/etc/init/init.usb.rc
+import /system/etc/init/init.usb.configfs
 
 on init
     # Bind mount the fstab file with the one in /vendor/etc/

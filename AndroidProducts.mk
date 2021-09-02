@@ -1,7 +1,7 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_RMX1805.mk
+    $(LOCAL_DIR)/cherish_RMX1805.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_RMX1805-user \
-    lineage_RMX1805-userdebug \
-    lineage_RMX1805-eng
+    cherish_RMX1805-user \
+    cherish_RMX1805-userdebug \
+    cherish_RMX1805-eng

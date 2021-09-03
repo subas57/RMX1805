@@ -16,7 +16,7 @@
 -framework/vendor.qti.hardware.data.connection-V1.0-java.jar
 -framework/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar
 -framework/vendor.qti.hardware.data.qmi-V1.0-java.jar
--priv-app/CNEService/CNEService.apk
+#-priv-app/CNEService/CNEService.apk
 -priv-app/WfdService/WfdService.apk
 -priv-app/dpmserviceapp/dpmserviceapp.apk
 bin/dpmd
@@ -44,7 +44,7 @@ etc/permissions/privapp-permissions-com.qualcomm.location.xml
 etc/permissions/qti_libpermissions.xml
 etc/permissions/qti_permissions.xml
 etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml
-#etc/sysconfig/qti_whitelist.xml
+etc/sysconfig/qti_whitelist.xml
 etc/wfdconfig.xml
 etc/wfdconfigsink.xml
 lib/com.qualcomm.qti.dpm.api@1.0.so

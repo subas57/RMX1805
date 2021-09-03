@@ -129,9 +129,5 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_msm8953
 TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8953
 
-# Charger
-BOARD_CHARGER_DISABLE_INIT_BLANK := true
-BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(COMMON_PATH)/charger/images
-
 # Inherit from the proprietary version
 -include vendor/oppo/RMX1805/BoardConfigVendor.mk

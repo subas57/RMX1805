@@ -4,4 +4,4 @@ PRODUCT_MAKEFILES := \
 COMMON_LUNCH_CHOICES := \
     dot_RMX1805-user \
     dot_RMX1805-userdebug \
-    _RMX1805-eng
+    dot_RMX1805-eng
